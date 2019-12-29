@@ -1,8 +1,8 @@
 FROM debian:buster
-RUN apt update
-RUN apt -y upgrade
-COPY srcs /tmp
+RUN apt-get update
+RUN apt-get -y upgrade
 #database
-RUN apt install mariadb-server -y
-RUN service mysql start
+RUN apt-get install mariadb-server -y
+COPY srcs /tmp
 RUN bash /tmp/setup_config/mysql_init.sh
+#CMD bash /tmp/init.sh && tail -f /dev/null
